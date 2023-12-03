@@ -1,1 +1,611 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Join the hardest data science tournament on the planet.
+  Build the world's open hedge fund by modeling the stock market. Use the power of machine
+  learning and AI (Artificial Intelligence) to earn cryptocurrency on your NMR staked.
+  Over $200,000 paid out every month. Get started quickly with our example models using
+  XGBoost and linear regression. Kaggle and Quantopian alternative.">
+  <meta name="keywords" content="quant hedge fund, data science competition, data science
+  tournament, quantopian, predict stock market, earn cryptocurrency, earn numeraire, stock
+  market signals, stake money">
+  <meta property="og:title" content="Numerai">
+  <meta property="og:description" content="The hardest data science tournament on the planet.
+  Build the world's open hedge fund by modeling the stock market.">
+  <meta property="og:url" content="https://www.numer.ai/">
+  <meta property="og:image" content="https://numer.ai/homepage/img/embed-cover.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Numerai">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="/homepage/scripts/aos.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+
+  <link rel="stylesheet" href="/homepage/style/style.css?v=0.0.7" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/vbp2xda.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/cxe1pkr.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/obh8pxg.css">
+
+  <script>
+    if (localStorage['auth-token']) { window.location = '/home'; }
+  </script>
+  <link rel="stylesheet" href="/homepage/style/atom-one-dark.css" />
+  <script type="text/javascript" async src="https://www.googletagmanager.com/gtag/js?id=UA-70826499-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || []; function
+      gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config',
+        'UA-70826499-4', { cookie_flags: 'SameSite=None;Secure' });
+  </script>
+  <title>Numerai</title>
+  <script defer data-domain="numer.ai" src="https://plausible.io/js/script.js"></script>
+  <script>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+</head>
+
+<body>
+  <div id="page_container">
+    <!-- Navigation -->
+    <div class="nav_bar dark_box text-center pr-0">
+      <div class="container">
+        <header class="d-flex flex-wrap align-items-center py-3 justify-content-between">
+          <a href="/" class="d-flex align-items-center text-dark text-decoration-none ms-3 ms-sm-0">
+            <img src="/fund/img/numerai_logo.png" class="nav_logo" />
+          </a>
+
+          <div class="d-none d-xl-block">
+            <a href="/learn" class="nav_link mx-2">
+              Docs
+            </a>
+            <a href="https://forum.numer.ai" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+              Forum
+            </a>
+            <a href="https://discord.gg/numerai" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+              Discord
+            </a>
+            <a href="https://github.com/numerai/example-scripts" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+              GitHub
+            </a>
+            <a href="https://numerai.fund" target="_blank" class="nav_link mx-2" target="_blank"
+              rel="noreferer noopener">
+              Fund
+            </a>
+            <a href="https://signals.numer.ai" target="_blank" class="nav_link mx-2" target="_blank"
+              rel="noreferer noopener">
+              Signals
+            </a>
+            <a href="https://numer.ai/leaderboard" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+              Leaderboard
+            </a>
+
+          </div>
+          <div class="d-none d-xl-block">
+            <a href="/login" class="mx-2" rel="noreferer noopener">
+              <button class="action_button action_button_secondary">
+                Login
+              </button>
+            </a>
+            <a href="/signup" class="mx-4"><button type="button" class="action_button">
+                Sign Up
+              </button>
+            </a>
+          </div>
+          <div class="d-block d-xl-none">
+            <button class="nav_link" id="mobile_menu_button">
+              <img style="height: 16px" class="mb-0" src="/fund/img/menu_icon.png">
+            </button>
+          </div>
+        </header>
+      </div>
+    </div>
+    <div id="lex_banner" class="banner">
+      <a href="https://www.youtube.com/watch?v=ziQSpuST6Es" target="_blank">
+        <div class="container py-3 px-4 px-md-3">
+          <div class="row">
+            <div class="col-12 col-md-2">
+              <img src="/homepage/img/lex_icon.jpg" class=" banner_video_icon" />
+            </div>
+            <div class="col-12 col-md-10">
+              <div>
+                <h2 class="mt-3 mt-md-0">Watch the <b>Lex Fridman interview with Numerai founder Richard </b><span style="white-space: nowrap;"><b>Craib</b> » </span></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="top_background">
+      <div id="mobile_menu" class="d-xs-block d-xl-none">
+        <div class="">
+          <a href="/learn" class="nav_link mx-2">
+            Docs
+          </a>
+          <a href="https://forum.numer.ai" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+
+            Forum
+          </a>
+          <a href="https://discord.gg/numerai" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+            Discord
+          </a>
+          <a href="https://github.com/numerai/example-scripts" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+            GitHub
+          </a>
+          <a href="https://numerai.fund" target="_blank" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+            Fund
+          </a>
+          <a href="https://signals.numer.ai" target="_blank" class="nav_link mx-2" target="_blank"
+            rel="noreferer noopener">
+            Signals
+          </a>
+          <a href="https://numer.ai/leaderboard" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+            Leaderboard
+          </a>
+          <a href="/login" class="nav_link mx-2" target="_blank" rel="noreferer noopener">
+            Login
+          </a>
+          <a href="/signup" class="nav_link mx-2">
+            Sign Up
+          </a>
+        </div>
+      </div>
+      <!-- End Navigation -->
+      <!-- Banner -->
+
+      <div class="hero_container d-flex dark_box pb-lg-5 pt-0 pt-sm-5">
+        <div class="container d-flex">
+          <div class="d-flex flex-column pt-4 pb-5 justify-content-center full_width my-4 my-sm-0">
+            <div class="">
+              <div class="hero_text_container d-none d-lg-block">
+                <h1 id="hero_big_text" class="hero_main_text py-1 mt-0 mt-sm-5">The hardest data science tournament in
+                  the
+                  world.
+                </h1>
+                <h2 class="hero_subtitle_text py-1 font_600">Predict the stock market.
+                </h2>
+              </div>
+              <div class="hero_text_container d-block d-lg-none px-2 mt-5 text-center">
+                <h1 class="py-1 mt-0">The hardest data science tournament in the world.
+                </h1>
+                <h1 class="pt-4">Predict the stock market.
+                </h1>
+              </div>
+            </div>
+            <div class="d-flex mt-4">
+              <a href="/signup">
+                <button class="action_button d-inline-block me-3">
+                  Sign Up
+                </button>
+              </a>
+              <a href="/tournament">
+                <button class="action_button action_button_secondary d-inline-block">
+                  View Leaderboard
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="hero_stats_row px-1 full_width py-3 invisible" id="hero_stats_row">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-4 px-4 py-4 hero_stat_container">
+              <div id="stat_total_paid" class="big_performance_number stat_total_paid">
+                &nbsp;
+              </div>
+              <div class="big_performance_label">
+                paid to data scientists
+              </div>
+            </div>
+            <div class="col-12 col-sm-4 px-4 py-4 hero_stat_container">
+              <div id="stat_total_staked_models" class="big_performance_number">
+                &nbsp;
+              </div>
+              <div class="big_performance_label">staked models
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container border_bottom py-1 py-sm-5 px-4" data-aos="fade-up">
+      <div class="row my-5 ">
+        <div class="col-xs-12 col-sm-12 d-flex flex-column align-items-center">
+          <h2 class="mb-3">Start with hedge fund quality data.</h2>
+          <p class="big_text">It is clean and regularized, designed to be usable right away. Obfuscated, so it can be
+            given out for free.</p>
+          <a href="/data" target="_blank">
+            <button class="action_button action_button_secondary d-inline-block mt-3">
+              Download Data
+            </button>
+          </a>
+          <div class="row justify-content-center">
+            <div class="col-xs-12 col-lg-8">
+              <div class=" mt-5">
+                <!-- <table class="full_width dark_table">
+                  <tr>
+                    <th style="border-top-left-radius: 8px">id</th>
+                    <th>era</th>
+                    <th>feature1</th>
+                    <th class="d02">. . .</th>
+                    <th>feature1050</th>
+                    <th style="border-top-right-radius: 8px">target</th>
+                  </tr>
+                  <tr>
+                    <td>n2b2e3dd163cb422</td>
+                    <td>era1</td>
+                    <td>0.75</td>
+                    <td class="d01">. . .</td>
+                    <td>0.00</td>
+                    <td>0.25</td>
+                  </tr>
+                  <tr>
+                    <td>n177021a571c94c8</td>
+                    <td>era1</td>
+                    <td>1.00</td>
+                    <td class="d02">. . .</td>
+                    <td>0.25</td>
+                    <td>0.75</td>
+                  </tr>
+                  <tr>
+                    <td>n7830fa4c0cd8466</td>
+                    <td>era1</td>
+                    <td>0.25</td>
+                    <td class="d01">. . .</td>
+                    <td>1.00</td>
+                    <td>0.00</td>
+                  </tr>
+                  <tr>
+                    <td>nc584a184cee941b</td>
+                    <td>era1</td>
+                    <td>0.25</td>
+                    <td class="d02">. . .</td>
+                    <td>0.00</td>
+                    <td>1.00</td>
+                  </tr>
+                  <tr>
+                    <td class="d03">nc5ab8667901946a</td>
+                    <td class="d03">era1</td>
+                    <td class="d03">0.75</td>
+                    <td class="d01 d05">. . .</td>
+                    <td class="d03">0.25</td>
+                    <td class="d03">0.25</td>
+                  </tr>
+                  <tr class="fading">
+                    <td style="border-bottom-left-radius: 8px" class="d04">n84e624e4714a7ca</td>
+                    <td class="d04">era1</td>
+                    <td class="d04">0.00</td>
+                    <td class="d02 d06">. . .</td>
+                    <td class="d04">0.75</td>
+                    <td style="border-bottom-right-radius: 8px" class="d04">1.00</td>
+                  </tr>
+                </table> -->
+                <img src="/homepage/img/data.png" class="full_width shadow" />
+              </div>
+              <!-- <div class="d-block d-sm-none mt-4">
+              </div> -->
+              <p class="d-inline-block caption px-3 mt-3">
+                Each <strong>id</strong> corresponds to a stock at a specific time <strong>era</strong>. The
+                <strong>features</strong> describe the various quantitative attributes of the stock at the time. The
+                <strong>target</strong> represents an abstract measure of performance a fixed number of weeks into the
+                future.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container border_bottom py-1 py-sm-5 px-4" data-aos="fade-up">
+      <div class="row gx-5 my-5 ">
+        <div class="col-xs-12 col-lg-6 mb-3">
+          <h2 class="mb-3">Apply machine learning to predict the stock market.</h2>
+          <p class="big_text">Build a model using the example Python and R scripts. Everything you need to get started
+            in one package.</p>
+          <a href="https://github.com/numerai/example-scripts" target="_blank">
+            <button class="action_button action_button_secondary d-inline-block mt-3 mb-3">
+              Clone Example Scripts
+            </button>
+          </a>
+        </div>
+        <div class="col-xs-12 col-lg-6 margin_0_auto">
+          <div class="nmr_paper nmr-code-container">
+            <pre><code class="python">#!/usr/bin/env python
+""" Example classifier on Numerai data using a xgboost regression. """
+
+import pandas as pd
+from xgboost import XGBRegressor
+
+# training data contains features and targets
+training_data = pd.read_csv("numerai_training_data.csv").set_index("id")
+
+# tournament data contains features only
+tournament_data = pd.read_csv("numerai_tournament_data.csv").set_index("id")
+feature_names = [f for f in training_data.columns if "feature" in f]
+
+# train a model to make predictions on tournament data
+model = XGBRegressor(max_depth=5, learning_rate=0.01, \
+                   n_estimators=2000, colsample_bytree=0.1)
+model.fit(training_data[feature_names], training_data["target"])
+
+# submit predictions to numer.ai
+predictions = model.predict(tournament_data[feature_names])
+predictions.to_csv("predictions.csv")</code></pre>
+          </div>
+          <p class="d-inline-block caption px-3 mt-3 text-center full_width">
+            An example of a complete Numerai model written in Python.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="container border_bottom py-1 py-sm-5 px-4" data-aos="fade-up">
+      <div class="row justify-content-between gx-5 my-5 flex-wrap-reverse">
+        <div class="col-12 col-xl-3 margin_0_auto">
+          <div class="nmr_paper">
+            <table class="dark_table">
+              <tr>
+                <th class="t2pad" style="border-top-left-radius: 8px">id</th>
+                <th class="t2pad" style="border-top-right-radius: 8px">prediction</th>
+              </tr>
+              <tr>
+                <td class="t2pad">n60dffdaceb7e467</td>
+                <td class="t2pad">0.25</td>
+              </tr>
+              <tr>
+                <td class="t2pad">nadaeef0214b84a8</td>
+                <td class="t2pad">1.00</td>
+              </tr>
+              <tr>
+                <td class="t2pad">nb13883520a4344f</td>
+                <td class="t2pad">0.25</td>
+              </tr>
+              <tr>
+                <td class="t2pad">n423766c5a4fa42a</td>
+                <td class="t2pad">0.75</td>
+              </tr>
+              <tr>
+                <td class="d03 t2pad">n252b14301e46a31</td>
+                <td class="d03 t2pad">0.25</td>
+              </tr>
+              <tr>
+                <td class="d03 t2pad">n75a5baf93a624cc</td>
+                <td class="d03 t2pad">0.00</td>
+              </tr>
+              <tr class="fading">
+                <td style="border-bottom-left-radius: 8px" class="d04 t2pad">n2ff91086716e413</td>
+                <td style="border-bottom-right-radius: 8px" class="d04 t2pad">1.00</td>
+              </tr>
+            </table>
+          </div>
+          <p class="d-inline-block caption px-3 mt-3 text-center full_width">
+            Example target predictions.
+          </p>
+        </div>
+        <div class="col-12 col-xl-7">
+          <h2>Submit predictions to control the capital of Numerai's hedge fund.</h2>
+          <p class="big_text">Build reputation to claim your place on the <a href="/tournament" target="_blank"
+              rel="noopener noreferrer" class="text-link">leaderboard</a>. Stake on your model to earn cryptocurrency.
+            <span class="text-hero-paid"><span id="money-paid" class="stat_total_paid">$40,572,172</span><span
+                id="body_0">
+                in NMR has been paid to data
+                scientists.</span></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-1 py-sm-5 px-4" data-aos="fade-up">
+      <div class="text-center">
+        <h2 class="mb-5 py-4">Learn More</h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-10 col-sm-9 col-md-4 no-padding mb-5 mb-md-0">
+          <div class="video-container" style="background-color: #a3a451;">
+            <iframe class="numerai-video" data-src="https://www.youtube-nocookie.com/embed/dhJnt0N497c" frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+              sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
+          </div>
+          <p class="caption">
+            Learn how Numerai combines thousands of models into one meta model to predict the stock market.
+          </p>
+        </div>
+        <div class="col-10 col-sm-9 col-md-4 no-padding mb-5 mb-md-0">
+          <div style="padding:56.25% 0 0 0;position:relative;background-color: #a45187;"><iframe
+              data-src="https://player.vimeo.com/video/205032211?color=ffffff"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+              allow="autoplay; fullscreen" allowfullscreen
+              sandbox="allow-scripts allow-same-origin allow-presentation"></iframe></div>
+
+          <p class="caption">
+            Numerai data scientists stake their best models with our cryptocurrency, NMR. Watch the video introducing
+            NMR to our community.
+          </p>
+        </div>
+        <div class="col-10 col-sm-9 col-md-4 no-padding mb-5 mb-md-0">
+          <div class="video-container" style="background-color: #4988a5;">
+            <iframe class="numerai-video" data-src="https://www.youtube-nocookie.com/embed/GWeC2PK4yXQ" frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+              sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
+          </div>
+          <p class="caption">
+            Introduction to Numerai Signals, a tournament for data scientists who have their own data.
+          </p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+
+      </div>
+    </div>
+    <div class="container py-1 py-sm-5 px-4" data-aos="fade-up">
+      <div class="row my-5 ">
+        <div class="col-12 col-sm-12 d-flex flex-column align-items-center">
+          <h1 class="mb-3 text-center">Join the network and build the world’s last hedge fund.</h1>
+          <p class="big_text mb-5 text-center">Backed by Union Square Ventures, the co-founder of Renaissance, and the
+            co-founder of
+            Coinbase.</p>
+          <!-- <a href="#">
+          <button class="action_button d-inline-block mt-3">
+            Sign up
+          </button>
+        </a> -->
+          <!-- <a href="#">
+          <button class="action_button action_button_secondary d-inline-block mt-3">
+            Learn about the fund
+          </button>
+        </a> -->
+          <div class="contact_form mt-4 d-sm-block d-flex flex-column align-items-center">
+            <h3 class="text-center mb-3">Receive updates about Numerai</h3>
+            <input type="email" class=" subscribe_input d-inline-block w-100" id="subscribeEmail"
+              aria-describedby="emailHelp" placeholder="Email">
+            <button class="action_button d-inline-block  w-100" id="subscribe_button"><span
+                id="foot_subscribe">Subscribe</span></button>
+            <div class="ps-3 mt-1" id="subscribe_response">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dark_box" data-aos="fade-up">
+      <div class="container mt-5 py-5">
+        <div class="text-center">
+          <h2 class="mb-5 py-4">News</h2>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-3 col-12 mb-5">
+            <a class="block_link"
+              href="https://www.bnnbloomberg.ca/crowdsourced-quant-backed-by-tudor-jones-rides-the-crypto-wave-1.1662498"
+              target="_blank">
+              BLOOMBERG<h3 class="underline_on_hover">Crowdsourced Quant Backed by Paul Tudor Jones Rides the Crypto
+                Wave</h3>
+              <hr>
+              <p>
+                As far as Hayden Burgoyne is concerned, picking stock market winners is hardly rocket science. And he
+                should
+                know. Burgoyne is a NASA engineer who spends his days plotting a mission to explore the moons of
+                Jupiter.
+                But at night, the 32-year-old is an amateur quant...
+              </p>
+            </a>
+          </div>
+          <div class="col-sm-3 col-12 mb-5">
+            <a class="block_link"
+              href="https://www.wired.com/2016/12/7500-faceless-coders-paid-bitcoin-built-hedge-funds-brain/"
+              target="_blank">
+              WIRED<h3 class="underline_on_hover">7,500 Faceless Coders Built a Hedge Fund's Brain<span
+                  class="d-none d-sm-inline"><br /><br /></span></h3>
+              <hr />
+              <p>
+                Richard Craib is a 29-year-old South African who runs a hedge fund in San Francisco. Or rather, he
+                doesn't
+                run it. He leaves that to an artificially intelligent system built by several thousand data scientists
+                whose names he doesn't know...
+              </p>
+            </a>
+          </div>
+          <div class="col-sm-3 col-12 mb-5">
+            <a class="block_link"
+              href="https://www.forbes.com/sites/laurashin/2017/02/21/this-is-the-worlds-first-cryptocurrency-issued-by-a-hedge-fund/?sh=47cb555d60b6"
+              target="_blank">
+              FORBES <h3 class="underline_on_hover">This Is The World's First Cryptocurrency Issued By A Hedge Fund</h3>
+              <hr />
+              <p>
+                With performance falling, investors fleeing and offices closing, hedge funds had a rough 2016.
+
+                But San Francisco-based Numerai was just getting started.
+
+                Instead of relying on the genius of a single person or small team, the firm uses encrypted data sets to
+                crowdsource stock market prediction models...
+              </p>
+            </a>
+          </div>
+          <div class="col-sm-3 col-12">
+            <a class="block_link" href="https://archive.ph/PnaMX" target="_blank">
+              FINANCIAL TIMES <h3 class="underline_on_hover">Artificial intelligence-focused Numerai raises $1.5m<span
+                  class="d-none d-sm-inline"><br /><br /></span></h3>
+              <hr />
+              <p>
+                A hedge fund focused on artificial intelligence has raised $1.5m from a group of investors led by a
+                founder of Renaissance Technologies, one of the world’s biggest money managers, underscoring the growing
+                interest in applying cutting-edge technology to markets...
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container pb-2">
+      <div class="row justify-content-around my-5">
+        <div class="col-12 col-lg-4 d-flex flex-column">
+          <table class="mb-3">
+            <tr>
+              <td class="pe-3 font_500">General enquiries</td>
+              <td><a href="mailto:contact@numer.ai">contact@numer.ai</a></td>
+            </tr>
+            <tr>
+              <td class="pe-3 font_500">Community and support</td>
+              <td> <a href="https://discord.gg/numerai" target="_blank">discord.gg/numerai</a></td>
+            </tr>
+            <tr>
+              <td class="pe-3 font_500">Careers</td>
+              <td> <a href="https://angel.co/company/numerai/jobs" target="_blank">AngelList</a></td>
+            </tr>
+            <tr>
+              <td class="pe-3 font_500">Investor inquiries</td>
+              <td><a href="mailto:investing@numer.ai">investing@numer.ai</a></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-12 col-lg-8">
+          <p class="font_tiny">
+            Note: Numerai runs a quantitative global equity market neutral hedge fund which is unsuitable for most
+            investors. The fund is designed for institutional investors though some high net worth accredited
+            individuals may qualify.
+          </p>
+        </div>
+        <div class="d-flex mt-3">
+          <div><a href="https://twitter.com/numerai" target="_blank"><img class="social_icon pe-2"
+                src="/homepage/img/icon_twitter.png"></a></div>
+          <div><a href="https://t.me/NMR_Official" target="_blank"><img class="social_icon pe-2"
+                src="/homepage/img/icon_telegram.png"></a></div>
+          <div><a href="https://medium.com/numerai" target="_blank"><img class="social_icon pe-2"
+                src="/homepage/img/icon_medium.png"></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer_box pb-5 d-none" id="legal">
+    <div class="container">
+      <footer class="pb-5 px-4">
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+  <script src="/homepage/index.js?v=0.06"></script>
+  <script src="https://player.vimeo.com/api/player.js" crossorigin></script>
+  <script>
+    AOS.init({ once: true, offset: 120, disable: 'mobile', });
+  </script>
+  </div>
+</body>
+
+</html>
